@@ -1,26 +1,24 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Get all the navigation links, sections, and learn more buttons
     const navLinks = document.querySelectorAll(".nav-link");
     const sections = document.querySelectorAll("section");
     const learnMoreButtons = document.querySelectorAll(".learn-more");
     const worksImages = document.querySelectorAll(".works-image");
 
-    // Handle navigation links (for sections)
     navLinks.forEach(link => {
         link.addEventListener("click", function (e) {
             e.preventDefault();
-            const targetId = this.getAttribute("href").substring(1); // Get the target section ID
-            sections.forEach(section => section.classList.remove("active")); // Remove 'active' class from all sections
-            document.getElementById(targetId).classList.add("active"); // Add 'active' class to target section
+            const targetId = this.getAttribute("href").substring(1); 
+            sections.forEach(section => section.classList.remove("active")); 
+            document.getElementById(targetId).classList.add("active"); 
         });
     });
 
-    // Handle 'Learn More' button clicks for works
+
     learnMoreButtons.forEach(button => {
         button.addEventListener("click", function () {
             worksImages.forEach(workImage => {
                 if (workImage !== this.closest(".works-image")) {
-                    workImage.classList.add("hidden"); // Hide the other works
+                    workImage.classList.add("hidden"); 
                 }
             });
     
@@ -28,14 +26,13 @@ document.addEventListener("DOMContentLoaded", function () {
             const titleElement = workImage.querySelector("h3");
             const imageElement = workImage.querySelector("img");
     
-            titleElement.style.visibility = "hidden"; // Hide the title
-            imageElement.style.visibility = "hidden"; // Hide the image
-            this.style.visibility = "hidden"; // Hide the "Learn More" button
+            titleElement.style.visibility = "hidden"; 
+            this.style.visibility = "hidden"; 
     
             const title = titleElement.textContent;
             const imageSrc = imageElement.src;
     
-            // Add specific details for each project
+            
             let projectDescription = "";
             if (title === "Catch A Blast!") {
                 projectDescription = `Catch a Blast is a simple, retro-inspired arcade game designed to entertain while subtly promoting healthy choices and stress management among young adults. Players control a paddle to catch “healthy” items that add to their score while avoiding “unhealthy” items. Developed using the Turtle module, this game combines simplicity with meaningful gameplay.`;
@@ -67,12 +64,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 newSection.remove();
     
                 worksImages.forEach(workImage => {
-                    workImage.classList.remove("hidden"); // Show all works again
+                    workImage.classList.remove("hidden"); 
                 });
     
-                titleElement.style.visibility = "visible"; // Show the title back
-                imageElement.style.visibility = "visible"; // Show the image back
-                this.style.visibility = "visible"; // Show the "Learn More" button back
+                titleElement.style.visibility = "visible"; 
+                imageElement.style.visibility = "visible"; 
+                this.style.visibility = "visible"; 
             });
         });
     });
